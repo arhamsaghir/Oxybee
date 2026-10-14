@@ -4,42 +4,51 @@ export default function Newsletter() {
   return (
     <section
       id="contact"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden"
+      className="relative flex h-screen min-h-screen max-h-screen h-[100dvh] flex-col justify-between overflow-hidden"
       style={{
         background:
           "radial-gradient(circle at 84% 69%, rgba(168,168,168,0.9) 0%, rgba(255,255,255,1) 62%)",
       }}
     >
+      {/* oversized solid wordmark aligned to the top, responsive to device height and width */}
+      <h2
+        aria-hidden="true"
+        className="font-display pointer-events-none select-none whitespace-nowrap text-center font-medium leading-none text-[#141414] pt-3 sm:pt-5 lg:pt-6 shrink-0"
+        style={{ fontSize: "clamp(2.5rem, min(14.5vw, 13vh), 10.5rem)" }}
+      >
+        OXYBLASTER
+      </h2>
+
       {/* product, enlarged and bleeding off the right edge */}
       <img
         src="/figma/hero-product-centered.png"
         alt="Oxyblaster air diffusion unit"
-        className="pointer-events-none absolute right-0 top-[48%] hidden h-[94%] max-h-[900px] w-auto -translate-y-1/2 translate-x-[10%] object-contain lg:block"
+        className="pointer-events-none absolute right-0 top-[52%] hidden h-[75%] max-h-[750px] w-auto -translate-y-1/2 translate-x-[10%] object-contain lg:block"
         style={{ filter: "grayscale(1) brightness(1.05) contrast(1.03)" }}
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 pb-40 pt-28 sm:px-16">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 sm:px-16 py-4">
         {/* copy + form */}
-        <Reveal variant="fade" className="flex max-w-[671px] flex-col gap-20">
-          <div className="flex flex-col gap-4">
-            <h2 className="font-display text-4xl leading-tight text-ink sm:text-5xl">
+        <Reveal variant="fade" className="flex max-w-[671px] flex-col gap-6 sm:gap-10 lg:gap-12">
+          <div className="flex flex-col gap-2 sm:gap-4">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight text-ink">
               Next-generation air diffusion system
             </h2>
-            <p className="font-body text-base text-muted">
+            <p className="font-body text-sm sm:text-base text-muted">
               Oxyblaster dissolves more oxygen with microbubbles, cutting
               aeration power by up to 30%. Backed by a 10-year warranty.
             </p>
           </div>
 
           <form
-            className="flex w-full max-w-[436px] flex-col gap-3"
+            className="flex w-full max-w-[436px] flex-col gap-2 sm:gap-3"
             onSubmit={(e) => e.preventDefault()}
           >
-            <p className="font-body text-xl text-ink">Get the latest updates.</p>
-            <p className="font-body text-sm text-muted">
+            <p className="font-body text-lg sm:text-xl text-ink">Get the latest updates.</p>
+            <p className="font-body text-xs sm:text-sm text-muted">
               Subscribe to get updates on Oxyblaster, product launches, and more.
             </p>
-            <div className="mt-2 flex items-center justify-between border-b border-black/65 pb-2">
+            <div className="mt-1 sm:mt-2 flex items-center justify-between border-b border-black/65 pb-2">
               <input
                 type="email"
                 required
@@ -60,23 +69,12 @@ export default function Newsletter() {
           <img
             src="/figma/hero-product-centered.png"
             alt="Oxyblaster air diffusion unit"
-            className="mx-auto h-auto w-full max-w-[360px] object-contain lg:hidden"
+            className="mx-auto h-auto max-h-[22vh] w-auto max-w-[280px] object-contain lg:hidden"
             style={{ filter: "grayscale(1) brightness(1.05) contrast(1.03)" }}
             loading="lazy"
           />
         </Reveal>
       </div>
-
-      {/* oversized solid wordmark — 15.1vw keeps the full word inside the
-          viewport at every width: "OXYBLASTER" measures 6.33em in Playfair
-          Display 500, so the cap/floor of the clamp only bind at the extremes */}
-      <h2
-        aria-hidden="true"
-        className="font-display pointer-events-none absolute inset-x-0 bottom-6 select-none whitespace-nowrap text-center font-medium leading-none text-[#141414]"
-        style={{ fontSize: "clamp(3rem, 15.1vw, 16rem)" }}
-      >
-        OXYBLASTER
-      </h2>
     </section>
   );
 }

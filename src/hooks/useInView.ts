@@ -9,19 +9,18 @@ export function useInView<T extends HTMLElement>(
   options?: IntersectionObserverInit,
 ) {
   const ref = useRef<T>(null);
-  const [inView, setInView] = useState(false);
+  const [inView, setInView] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return (
+      typeof IntersectionObserver === "undefined" ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  });
 
   useEffect(() => {
+    if (inView) return;
     const el = ref.current;
     if (!el) return;
-
-    const reduce = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (reduce || typeof IntersectionObserver === "undefined") {
-      setInView(true);
-      return;
-    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -35,7 +34,7 @@ export function useInView<T extends HTMLElement>(
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [options]);
+  }, [inView, options]);
 
   return { ref, inView };
 }

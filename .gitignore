@@ -30,3 +30,6 @@ dist-ssr
 .zcode/
 .zcodeignore
 /*.png
+.aistudio/
+metadata.json
+

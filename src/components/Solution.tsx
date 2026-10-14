@@ -11,7 +11,7 @@ const clamp01 = (n: number) => Math.min(Math.max(n, 0), 1);
 /* Static list — mobile + reduced-motion fallback (every benefit plainly shown). */
 function StaticList() {
   return (
-    <div className="mx-auto flex max-w-[1312px] flex-col items-center gap-10 px-6 py-24 text-center sm:px-8">
+    <div className="mx-auto flex max-w-[1312px] flex-col items-center gap-10 px-6 pt-28 pb-20 text-center sm:px-8">
       <img
         src="/figma/about1-object.png"
         alt="Oxyblaster unit in operation"
@@ -51,14 +51,18 @@ export default function Solution() {
             className="relative hidden lg:block"
             style={{ height: TRACK }}
           >
-            <div className="sticky top-0 flex h-screen flex-col overflow-hidden">
-              <div className="mx-auto grid w-full max-w-[1312px] flex-1 grid-cols-[0.9fr_1.1fr] items-center gap-12 px-6 pb-10 sm:px-8">
+            <div className="sticky top-0 flex h-screen flex-col overflow-hidden pt-24 pb-8 lg:pt-28 lg:pb-10">
+              <div className="mx-auto grid w-full max-w-[1312px] flex-1 grid-cols-[0.9fr_1.1fr] items-center gap-12 px-6 pb-6 sm:px-8">
                 {/* Left: product — the fixed pointer / needle */}
-                <div className="flex justify-center lg:justify-start">
+                <div className="flex items-center justify-center lg:justify-start">
                   <img
                     src="/figma/about1-object.png"
                     alt="Oxyblaster unit in operation"
-                    className="h-auto w-full max-w-[400px] object-contain"
+                    className="h-auto w-auto object-contain"
+                    style={{
+                      maxHeight: "min(460px, 50vh)",
+                      maxWidth: "340px",
+                    }}
                     loading="lazy"
                   />
                 </div>
